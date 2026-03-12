@@ -29,40 +29,6 @@ Dalam konteks keamanan siber, perubahan file yang tidak terotorisasi bisa menjad
 
 ---
 
-## Arsitektur Wazuh FIM
-
-```
-┌─────────────────────┐         ┌──────────────────────┐
-│   Wazuh Agent       │ ──────▶ │   Wazuh Manager      │
-│  (target_1)         │  Alert  │  (wazuh.manager)     │
-│                     │         │                      │
-│  /var/ossec/etc/    │         │  ┌────────────────┐  │
-│  ossec.conf         │         │  │  OpenSearch /  │  │
-│                     │         │  │  Elasticsearch │  │
-│  [syscheck]         │         │  └────────────────┘  │
-│  - Scan direktori   │         │                      │
-│  - Hitung checksum  │         │  ┌────────────────┐  │
-│  - Kirim alert      │         │  │  Kibana /      │  │
-└─────────────────────┘         │  │  Dashboard     │  │
-                                │  └────────────────┘  │
-                                └──────────────────────┘
-```
-
----
-
-## Prerequisites
-
-Sebelum memulai, pastikan environment berikut sudah tersedia:
-
-| Komponen | Keterangan |
-|---|---|
-| Wazuh Manager | Sudah terinstall dan berjalan |
-| Wazuh Agent | Akan diinstall di mesin target |
-| OS Target | Ubuntu/Debian (panduan ini) |
-| Koneksi | Agent bisa reach Manager (port 1514/1515) |
-
----
-
 ## Step 1 — Install dan Aktifkan Wazuh Agent
 
 ### 1.1 Install Wazuh Agent
